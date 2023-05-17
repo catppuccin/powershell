@@ -1,0 +1,90 @@
+TOPIC 
+    about_Catppuccin
+
+SHORT DESCRIPTION
+    This module provides easy access to the pallettes of Catppuccin
+
+LONG DESCRIPTION
+    This module provides easy access to the pallettes of Catppuccin. 
+    
+    This module exports a hashtable named $Catppuccin that contains the 
+    pallettes of Catppuccin. The keys of the hashtable are the names of the
+    pallettes.
+    
+    The pallettes are:
+        Latte,
+        Frappe,
+        Macchiato,
+        Mocha
+    
+    The pallettes are objects that contain the colours of the pallette. The 
+    keys of the pallette objects are the names of the colours. The pallettes
+    also contain methods to convert output the whole pallette in a few formats.
+
+    The colours are:
+        Rosewater,
+        Flamingo,
+        Pink,
+        Mauve,
+        Red,
+        Maroon,
+        Peach,
+        Yellow,
+        Green,
+        Teal,
+        Sky,
+        Sapphire,
+        Blue,
+        Lavender,
+        Text,
+        Subtext1,
+        Subtext0,
+        Overlay2,
+        Overlay1,
+        Overlay0,
+        Surface2,
+        Surface1,
+        Surface0,
+        Base,
+        Mantle,
+        Crust
+    
+    The pallettes can be printed to the console in the following formats:
+        Table - Prints the pallette details in a table
+        Blocks - Prints a coloured block for each colour in the pallette
+    
+    The colours are objects that contain the RGB values of the colour, as well 
+    as methods to convert the RGB values to other colour formats.
+
+    The colours can be converted to the following formats:
+        RGB - Returns the RGB values of the colour
+        Hex - Returns the Hex value of the colour
+        Foreground - Returns the colour as an ANSI foreground colour
+        Background - Returns the colour as an ANSI background colour
+
+    The colour class's ToString() method is overridden to return the Hex value
+
+EXAMPLES
+    Importing the Module: 
+    Import-Module Catppuccin
+
+    The Module exports a variable named $Catppuccin
+
+    Accessing the Pallettes (e.g.): 
+
+    $Catppuccin["Frappe"].Green.RGB()
+    $Catppuccin["Macchiato"].Mauve.Hex()
+    $Catppuccin["Latte"].Rosewater.Foreground()
+    $Catppuccin["Mocha"].Blue.Background()
+
+NOTES
+    It might be preferable to set a default flavour of Catppuccin to use in your
+    profile/script. For example, if you want to use the Latte flavour of 
+    Catppuccin, you can add the following to your profile/script:
+
+    $Flavour = $Catppuccin["Latte"]
+
+    This will set the $Flavour variable to the Latte flavour of Catppuccin.
+    You can then use the colours in the $Flavour variable like so:
+
+    $Flavour.Rosewater.Foreground()

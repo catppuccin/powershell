@@ -9,31 +9,31 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-# RootModule = ''
+RootModule = 'Catppuccin.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.0.1'
+ModuleVersion = '0.1.0'
 
 # Supported PSEditions
-# CompatiblePSEditions = @()
+CompatiblePSEditions = @('Core')
 
 # ID used to uniquely identify this module
 GUID = '681715b8-9e32-404a-bf63-514f89225de0'
 
 # Author of this module
-Author = 'sm185592'
+Author = 'Stuart Miller'
 
 # Company or vendor of this module
-CompanyName = 'Unknown'
+# CompanyName = ''
 
 # Copyright statement for this module
-Copyright = '(c) sm185592. All rights reserved.'
+# Copyright = ''
 
 # Description of the functionality provided by this module
 # Description = ''
 
 # Minimum version of the PowerShell engine required by this module
-# PowerShellVersion = ''
+PowerShellVersion = '6.0'
 
 # Name of the PowerShell host required by this module
 # PowerShellHostName = ''

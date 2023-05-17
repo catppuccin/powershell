@@ -101,7 +101,7 @@ class Colour {
             Saturation and Lightness are returned as a percentage, from 0 to 100
             All values are rounded to the nearest integer
         #>
-        $HSL = $this.HSL()
+        $local:HSL = $this.HSL()
         return "$([Math]::Round($HSL[0])), $([Math]::Round($HSL[1] * 100))%, $([Math]::Round($HSL[2] * 100))%"
     }
 

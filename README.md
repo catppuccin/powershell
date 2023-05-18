@@ -48,7 +48,7 @@ $Flavor.Red.Hex()
 # Get the RGB value of the flavor's Green color
 $Flavor.Green.RGB() 
 # Returns an array of RGB values
-# Can also be accessed by $Flavor.Green.R, $Flavor.Green.G, and $Flavor.Green.B
+# Can also be accessed by $Flavor.Green.Red, $Flavor.Green.Green, and $Flavor.Green.Blue
 
 # Get the HSL value of the flavor's Blue color
 $Flavor.Blue.HSL() 
@@ -146,7 +146,7 @@ $PSStyle.Formatting.Warning = $Flavor.Peach.Foreground()
 
 - This Module does not set your terminal's color scheme. You will need to do this yourself. (e.g. [Catppuccin for Windows Terminal](https:github.com/catppuccin/windows-terminal))
 - Usage of the ANSI Escape sequences requires support for ANSI escape sequences and 24-bit color (truecolor) in your terminal. See [this article](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals) for more information.
-- This Module does not currently support WindowsPowerShell 5.1 or earlier. Support for WindowsPowerShell 5.1 is feasible and may be added in the future if there is interest.
+- This Module does not currently support Windows PowerShell 5.1 or earlier. Support for Windows PowerShell 5.1 is feasible and may be added in the future if there is interest.
 
 ## 💝 Thanks to
 

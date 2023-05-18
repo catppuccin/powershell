@@ -133,13 +133,13 @@ Usage for configuring PowerShell defaults:
 ```powershell
 # The following colors are used by PowerShell's formatting
 # Again PS 7.2+ only
-$PSStyle.Formatting.Debug = $global:Flavour.Sky.Foreground()
-$PSStyle.Formatting.Error = $global:Flavour.Red.Foreground()
-$PSStyle.Formatting.ErrorAccent = $global:Flavour.Blue.Foreground()
-$PSStyle.Formatting.FormatAccent = $global:Flavour.Teal.Foreground()
-$PSStyle.Formatting.TableHeader = $global:Flavour.Rosewater.Foreground()
-$PSStyle.Formatting.Verbose = $global:Flavour.Yellow.Foreground()
-$PSStyle.Formatting.Warning = $global:Flavour.Peach.Foreground()
+$PSStyle.Formatting.Debug = $Flavor.Sky.Foreground()
+$PSStyle.Formatting.Error = $Flavor.Red.Foreground()
+$PSStyle.Formatting.ErrorAccent = $Flavor.Blue.Foreground()
+$PSStyle.Formatting.FormatAccent = $Flavor.Teal.Foreground()
+$PSStyle.Formatting.TableHeader = $Flavor.Rosewater.Foreground()
+$PSStyle.Formatting.Verbose = $Flavor.Yellow.Foreground()
+$PSStyle.Formatting.Warning = $Flavor.Peach.Foreground()
 ```
 
 ## 📝 Notes

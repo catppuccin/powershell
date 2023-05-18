@@ -6,9 +6,9 @@
 </h3>
 
 <p align="center">
-	<a href="https://github.com/catppuccin/template/stargazers"><img src="https://img.shields.io/github/stars/catppuccin/template?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/template/issues"><img src="https://img.shields.io/github/issues/catppuccin/template?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
-	<a href="https://github.com/catppuccin/template/contributors"><img src="https://img.shields.io/github/contributors/catppuccin/template?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
+	<a href="https://github.com/JK-Flip-Flop96/powershell/stargazers"><img src="https://img.shields.io/github/stars/JK-Flip-Flop96/powershell?colorA=363a4f&colorB=b7bdf8&style=for-the-badge"></a>
+	<a href="https://github.com/JK-Flip-Flop96/powershell/issues"><img src="https://img.shields.io/github/issues/JK-Flip-Flop96/powershell?colorA=363a4f&colorB=f5a97f&style=for-the-badge"></a>
+	<a href="https://github.com/JK-Flip-Flop96/powershell/contributors"><img src="https://img.shields.io/github/contributors/JK-Flip-Flop96/powershell?colorA=363a4f&colorB=a6da95&style=for-the-badge"></a>
 </p>
 
 ## Usage

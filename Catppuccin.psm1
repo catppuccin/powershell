@@ -232,7 +232,7 @@ class Flavour {
             'Green', 'Teal', 'Sky', 'Sapphire', 'Blue', 'Lavender', 'Text', 'Subtext1', 
             'Subtext0', 'Overlay2', 'Overlay1', 'Overlay0', 'Surface2', 'Surface1', 'Surface0', 'Base',
             'Mantle', 'Crust') | 
-            Select-Object -Property @{Name = ' '; Expression = { "$($this.$_.Foreground())⬤$([char]27)[0m" } }, 
+            Select-Object -Property @{Name = ' '; Expression = { "$($this.$_.Foreground())$([char]0x2B24)$([char]27)[0m" } }, 
             @{Name = 'Name'; Expression = { $_.ToString() } }, 
             @{Name = 'Hex'; Expression = { $this.$_.Hex() } }, 
             @{Name = 'RGB'; Expression = { "rgb($($this.$_.RGBString()))" } }, 

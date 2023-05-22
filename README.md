@@ -64,7 +64,7 @@ $Flavor.Teal.Background()
 ```
 
 ### $PROFILE Usage
-The following examples are for using Catppuccin in your PowerShell profile. You can find your PowerShell profile by running `$PROFILE` in PowerShell. If you don't have a profile, you can create one by running `New-Item -Path $PROFILE -ItemType File -Force` in PowerShell.
+The following examples are for using Catppuccin in your PowerShell profile. You can find your PowerShell profile by running `$PROFILE` in PowerShell. If you don't have a profile, you can create one by running `New-Item -Path $PROFILE -ItemType File -Force`.
 
 Note that these examples assume that you have already imported the module earlier in your profile and assigned a flavor to the variable `$Flavor` as shown in the previous example.
 
@@ -77,7 +77,7 @@ function prompt {
         "$($Flavor.Green.Foreground())" + $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' + $($PSStyle.Reset)
 }
 # The above example requires the automatic variable $PSStyle to be available, so can be only used in PS 7.2+
-# Replace $PSStyle.Reset with "`e[0m" for PS 6.0 through PS 7.1
+# Replace $PSStyle.Reset with "`e[0m" for PS 6.0 through PS 7.1 or "$([char]27)[0m" for PS 5.1
 ```
 
 Usage for configuring another program's environment variables: (e.g. [fzf](https://github.com/junegunn/fzf))
@@ -146,7 +146,6 @@ $PSStyle.Formatting.Warning = $Flavor.Peach.Foreground()
 
 - This Module does not set your terminal's color scheme. You will need to do this yourself. (e.g. [Catppuccin for Windows Terminal](https:github.com/catppuccin/windows-terminal))
 - Usage of the ANSI Escape sequences requires support for ANSI escape sequences and 24-bit color (truecolor) in your terminal. See [this article](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals) for more information.
-- This Module does not currently support Windows PowerShell 5.1 or earlier. Support for Windows PowerShell 5.1 is feasible and may be added in the future if there is interest.
 
 ## 💝 Thanks to
 

@@ -6,9 +6,19 @@ class Colour {
         A class to represent a colour, with methods to return the RGB values, HSL values, hex code, 
         and ANSI escape sequences for foreground and background colours
     #>
+
+    # Required Values
     [byte]$Red
     [byte]$Green
     [byte]$Blue
+
+    # Calculated Values
+    hidden [double]$Hue
+    hidden [double]$Saturation
+    hidden [double]$Lightness
+
+    # Flags
+    hidden [bool]$HasHSL = $false
 
     Colour([byte]$Red, [byte]$Green, [byte]$Blue) {
         <#
@@ -58,6 +68,11 @@ class Colour {
             https://www.had2know.org/technology/hsl-rgb-color-converter.html
         #>
 
+        # Return the values if they have already been calculated
+        if ($this.HasHSL) {
+            return @($this.Hue, $this.Saturation, $this.Lightness)
+        }
+
         # Convert to a value from 0 to 1
         $local:R = $this.Red / 255
         $local:G = $this.Green / 255
@@ -86,6 +101,14 @@ class Colour {
         if ($B -gt $G) {
             $H = 360 - $H 
         }
+
+        # Set flag
+        $this.HasHSL = $true
+
+        # Cache values
+        $this.Hue = $H
+        $this.Saturation = $S
+        $this.Lightness = $L
 
         return @($H, $S, $L)
     }
@@ -118,7 +141,7 @@ class Colour {
         .SYNOPSIS
             Returns the ANSI Foreground escape sequence for the colour
         #>
-        return "`e[38;2;$($this.Red);$($this.Green);$($this.Blue)m"
+        return "$([char]27)[38;2;$($this.Red);$($this.Green);$($this.Blue)m"
     }
 
     [string]Background() {
@@ -126,7 +149,7 @@ class Colour {
         .SYNOPSIS
             Returns the ANSI Background escape sequence for the colour
         #>
-        return "`e[48;2;$($this.Red);$($this.Green);$($this.Blue)m"
+        return "$([char]27)[48;2;$($this.Red);$($this.Green);$($this.Blue)m"
     }
 
     [string]ToString() {
@@ -187,7 +210,7 @@ class Flavour {
             "$($this.Overlay1.Background())   $($this.Overlay0.Background())   " +
             "$($this.Surface2.Background())   $($this.Surface1.Background())   " +
             "$($this.Surface0.Background())   $($this.Base.Background())   " + 
-            "$($this.Mantle.Background())   $($this.Crust.Background())   `e[0m")
+            "$($this.Mantle.Background())   $($this.Crust.Background())   $([char]27)[0m")
     }
 
     Table() {
@@ -209,7 +232,7 @@ class Flavour {
             'Green', 'Teal', 'Sky', 'Sapphire', 'Blue', 'Lavender', 'Text', 'Subtext1', 
             'Subtext0', 'Overlay2', 'Overlay1', 'Overlay0', 'Surface2', 'Surface1', 'Surface0', 'Base',
             'Mantle', 'Crust') | 
-            Select-Object -Property @{Name = ' '; Expression = { "$($this.$_.Foreground())⬤`e[0m" } }, 
+            Select-Object -Property @{Name = ' '; Expression = { "$($this.$_.Foreground())⬤$([char]27)[0m" } }, 
             @{Name = 'Name'; Expression = { $_.ToString() } }, 
             @{Name = 'Hex'; Expression = { $this.$_.Hex() } }, 
             @{Name = 'RGB'; Expression = { "rgb($($this.$_.RGBString()))" } }, 

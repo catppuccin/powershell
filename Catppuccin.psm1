@@ -128,6 +128,64 @@ class Colour {
         return "$([Math]::Round($HSL[0])), $([Math]::Round($HSL[1] * 100))%, $([Math]::Round($HSL[2] * 100))%"
     }
 
+    [double[]]HSV() {
+        <#
+        .SYNOPSIS
+            Returns the seperate HSV values for the colour
+        
+        .DESCRIPTION
+            Returns the seperate HSV values for the colour
+            HSV values are returned as an array of doubles, in the order of Hue, Saturation, and Value
+            Hue is returned in degrees, from 0 to 360
+            Saturation and Value are returned as a value in the range of 0 to 1
+        #>
+
+        # Derived from the HSL values
+        $local:H, $local:S, $local:L = $this.HSL()
+
+        # H = H
+        $local:V = $L + $S * [Math]::Min($L, 1 - $L)
+        $local:S = if ($V -ne 0) { 2 * (1 - $L / $V) } else { 0 }
+
+        return @($H, $S, $V)
+    }
+
+    [string]HSVString() {
+        <#
+        .SYNOPSIS
+            Returns the HSV values for the colour as a formatted string
+        
+        .DESCRIPTION
+            Returns the HSV values for the colour as a formatted string
+            Hue is returned in degrees, from 0 to 360
+            Saturation and Value are returned as a percentage, from 0 to 100
+            All values are rounded to the nearest integer
+        #>
+        $local:HSV = $this.HSV()
+        return "$([Math]::Round($HSV[0])), $([Math]::Round($HSV[1] * 100))%, $([Math]::Round($HSV[2] * 100))%"
+    }
+
+    [double[]]CMYK() {
+        <#
+        .SYNOPSIS
+            Returns the CMYK values for the colour
+
+        .DESCRIPTION
+            Returns the CMYK values for the colour
+            CMYK values are returned as value from 0 to 1
+        #>
+        $local:R = $this.Red / 255
+        $local:G = $this.Green / 255
+        $local:B = $this.Blue / 255
+
+        $local:K = 1 - [Math]::Max([Math]::Max($R, $G), $B)
+        $local:C = if ($K -ne 1) { (1 - $R - $K) / (1 - $K) } else { 0 }
+        $local:M = if ($K -ne 1) { (1 - $G - $K) / (1 - $K) } else { 0 }
+        $local:Y = if ($K -ne 1) { (1 - $B - $K) / (1 - $K) } else { 0 }
+
+        return @($C, $M, $Y, $K)
+    }
+
     [string]Hex() {
         <#
         .SYNOPSIS

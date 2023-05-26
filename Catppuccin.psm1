@@ -251,24 +251,15 @@ class Flavour {
     [Colour]$Mantle
     [Colour]$Crust
 
-    Blocks() {
+    [string]Blocks() {
         <#
         .SYNOPSIS
             Prints a block for each colour in the flavour
         #>
-        Write-Host ("$($this.Rosewater.Background())   $($this.Flamingo.Background())   " +
-            "$($this.Pink.Background())   $($this.Mauve.Background())   " +
-            "$($this.Red.Background())   $($this.Maroon.Background())   " +
-            "$($this.Peach.Background())   $($this.Yellow.Background())   " +
-            "$($this.Green.Background())   $($this.Teal.Background())   " +
-            "$($this.Sky.Background())   $($this.Sapphire.Background())   " +
-            "$($this.Blue.Background())   $($this.Lavender.Background())   " +
-            "$($this.Text.Background())   $($this.Subtext1.Background())   " +
-            "$($this.Subtext0.Background())   $($this.Overlay2.Background())   " +
-            "$($this.Overlay1.Background())   $($this.Overlay0.Background())   " +
-            "$($this.Surface2.Background())   $($this.Surface1.Background())   " +
-            "$($this.Surface0.Background())   $($this.Base.Background())   " + 
-            "$($this.Mantle.Background())   $($this.Crust.Background())   $([char]27)[0m")
+        
+        return $($this.psobject.Properties | Select-Object -ExpandProperty Name | ForEach-Object {
+            "$($this.$_.Background())   "
+        }) -Join '' + "$([char]27)[0m"
     }
 
     Table() {
@@ -283,14 +274,9 @@ class Flavour {
             The output is intended to mimic the tables in the README.md of the Catppuccin/Catppuccin repo
         #>
 
-        # List the colour names in order so they're in the correct order in the table
-        # This could be done by accessing the members of the object with Get-Member, 
-        # but that doesn't get the order right
-        @('Rosewater', 'Flamingo', 'Pink', 'Mauve', 'Red', 'Maroon', 'Peach', 'Yellow', 
-            'Green', 'Teal', 'Sky', 'Sapphire', 'Blue', 'Lavender', 'Text', 'Subtext1', 
-            'Subtext0', 'Overlay2', 'Overlay1', 'Overlay0', 'Surface2', 'Surface1', 'Surface0', 'Base',
-            'Mantle', 'Crust') | 
-            Select-Object -Property @{Name = ' '; Expression = { "$($this.$_.Foreground())$([char]0x2B24)$([char]27)[0m" } }, 
+        $this.psobject.Properties | Select-Object -ExpandProperty Name |
+            Select-Object -Property `
+            @{Name = ' '; Expression = { "$($this.$_.Foreground())$([char]0x2B24)$([char]27)[0m" } }, 
             @{Name = 'Name'; Expression = { $_.ToString() } }, 
             @{Name = 'Hex'; Expression = { $this.$_.Hex() } }, 
             @{Name = 'RGB'; Expression = { "rgb($($this.$_.RGBString()))" } }, 

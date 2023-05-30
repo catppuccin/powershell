@@ -144,7 +144,7 @@ $PSStyle.Formatting.Warning = $Flavor.Peach.Foreground()
 
 ## 📝 Notes
 
-- This Module does not set your terminal's color scheme. You will need to do this yourself. (e.g. [Catppuccin for Windows Terminal](https:github.com/catppuccin/windows-terminal))
+- This Module does not set your terminal's color scheme. You will need to do this yourself. (e.g. [Catppuccin for Windows Terminal](https://github.com/catppuccin/windows-terminal))
 - Usage of the ANSI Escape sequences requires support for ANSI escape sequences and 24-bit color (truecolor) in your terminal. See [this article](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals) for more information.
 
 ## 💝 Thanks to

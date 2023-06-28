@@ -32,9 +32,11 @@ Import-Module Catppuccin
 $Flavor = $Catppuccin['Mocha']
 
 # Print a summary of the flavor's colors
-Write-Host $Flavor.Table()
+# Returns Null, calls Write-Host internally.
+$Flavor.Table()
 
 # Print blocks of the flavor's colors
+# Returns a string
 Write-Host $Flavor.Blocks()
 ```
 
@@ -145,7 +147,7 @@ $PSStyle.Formatting.Warning = $Flavor.Peach.Foreground()
 ## 📝 Notes
 
 - This Module does not set your terminal's color scheme. You will need to do this yourself. (e.g. [Catppuccin for Windows Terminal](https://github.com/catppuccin/windows-terminal))
-- Usage of the ANSI Escape sequences requires support for ANSI escape sequences and 24-bit color (truecolor) in your terminal. See [this article](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals) for more information.
+- Usage of the Foreground and Background colors requires support for ANSI Escape Sequences and 24-bit color (truecolor) in your terminal. See [this article](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_ansi_terminals) for more information.
 
 ## 💝 Thanks to
 
